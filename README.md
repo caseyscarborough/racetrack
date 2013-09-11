@@ -76,3 +76,21 @@ class RaceTests {
      }
 }
 ```
+
+### Chapter 5
+
+#### Adding Sample Data
+
+On page 55, the book covers adding sample data into the application in the `grails-app/conf/BootStrap.groovy` file. The `GrailsUtil.environment` method has been deprecated as well, and is now better to use `if(GrailsUtil.isDevelopmentEnv())`. Shown below:
+
+```groovy
+class BootStrap {
+    def init = { servletContext ->
+        if(GrailsUtil.isDevelopmentEnv()){
+            // Add sample data here.
+            // No need for 'break' statements either.
+        }
+    }
+    def destroy = {}
+}
+```
