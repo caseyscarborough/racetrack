@@ -94,3 +94,9 @@ class BootStrap {
     def destroy = {}
 }
 ```
+
+### Chapter 8
+
+#### Excluding Properties from Scaffolded Views
+
+On page 91, the book instructs you to edit the `src/templates/scaffolding/create.gsp` and `edit.gsp` and add `dateCreated` and `lastUpdated` to the list `excludedProps` list. Since the writing of the book, these properties have been moved into `_form.gsp`, and they should already be present. So this step is not necessary.
