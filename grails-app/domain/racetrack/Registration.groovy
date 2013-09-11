@@ -13,6 +13,8 @@ class Registration {
     Date dateCreated // This is a special name
     Date lastUpdated
 
+    static belongsTo = [race:Race]
+
     static constraints = {
     }
 }

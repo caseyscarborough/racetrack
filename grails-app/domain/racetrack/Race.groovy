@@ -11,6 +11,9 @@ class Race {
     BigDecimal cost
     Integer maxRunners
 
+    // Create a one-to-many relationship between Race and Registration
+    static hasMany = [registrations:Registration]
+
     static constraints = {
         // Set the order for the fields in the scaffolded view,
         // in addition to setting constraints for the fields.
@@ -20,7 +23,7 @@ class Race {
         city()
         state(inList: ["GA", "NC", "SC", "VA"])
         distance(min:0.0)
-        cost(min:0.0, max:0.0)
+        cost(min:0.0, max:100.0)
         maxRunners(min:0, max:10000)
     }
 
@@ -28,4 +31,7 @@ class Race {
         return distance * 0.6214
     }
 
+    String toString() {
+        return "${name}, ${startDate.format('MM/dd/yyyy')}"
+    }
 }
