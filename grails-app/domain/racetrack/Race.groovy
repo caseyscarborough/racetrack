@@ -15,7 +15,8 @@ class Race {
         // Set the order for the fields in the scaffolded view,
         // in addition to setting constraints for the fields.
         name(blank:false, maxSize:50)
-        startDate()
+        // Add custom validator to disallow dates in the past.
+        startDate(validator: {return (it > new Date())})
         city()
         state(inList: ["GA", "NC", "SC", "VA"])
         distance(min:0.0)
