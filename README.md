@@ -2,6 +2,25 @@
 
 This is a small web application built using [Grails](http://grails.org). It follows along with the application built in the [Getting Started with Grails, Second Edition](http://www.infoq.com/minibooks/grails-getting-started).
 
+## Dependencies
+
+The book uses Grails 1.2. I'm using the latest version of Grails (at this time is 2.2.4).
+
+* Java JDK
+* Grails 2.2.4
+
+## Usage
+
+You can use the project by cloning the repository and running the grails run-app command.
+
+```bash
+$ git clone https://bitbucket.org/csu_cscarborough/racetrack
+$ cd racetrack
+$ grails run-app
+```
+
+Then browse to [localhost:8080/racetrack](http://localhost:8080/racetrack) to see the application in action.
+
 ## Issues with following the book
 
 Here are a list of the issues I've found while following along with the book (which uses Grails 1.2).
