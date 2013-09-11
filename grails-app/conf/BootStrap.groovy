@@ -17,7 +17,7 @@ class BootStrap {
                 city: "Goose",
                 state: "NC",
                 zipcode: "12345",
-                email: "jane@wherever"
+                email: "jane@wherever.com"
             )
             jane.save()
             if(jane.hasErrors()) { println jane.errors }
@@ -26,20 +26,20 @@ class BootStrap {
             def trot = new Race(
                 name:"Turkey Trot",
                 startDate:(new Date() + 90),
-                city:"Duck",
-                state:"NC",
-                distance:5.0,
-                cost:20.0,
-                maxRunners:350
+                city :"Duck",
+                state: "NC",
+                distance: 5.0,
+                cost: 20.0,
+                maxRunners: 350
             )
             trot.save()
             if(trot.hasErrors()){ println trot.errors }
 
             // Add sample registration.
             def reg = new Registration(
-                paid:false,
-                runner:jane,
-                race:trot
+                paid: false,
+                runner: jane,
+                race: trot
             )
             reg.save()
             if(reg.hasErrors()){ println reg.errors }
