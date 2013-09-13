@@ -26,22 +26,22 @@
         <fieldset class="form">
             <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'login', 'error')} required">
                 <label for="login">
-                    <g:message code="user.login.label" default="Login" />
+                    Login
                     <span class="required-indicator">*</span>
                 </label>
-                <g:textField name="login" value="${userInstance?.login}"/>
+                <g:textField name="login"/>
             </div>
 
             <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'password', 'error')} required">
                 <label for="password">
-                    <g:message code="user.password.label" default="Password" />
+                    Password
                     <span class="required-indicator">*</span>
                 </label>
-                <g:field type="password" name="password" value="${userInstance?.password}"/>
+                <g:field type="password" name="password"/>
             </div>
         </fieldset>
         <fieldset class="buttons">
-            <g:submitButton name="login" class="save" value="${message(code: 'default.button.login.label', default: 'Login')}" />
+            <g:submitButton name="loginSubmit" class="save" value="${message(code: 'default.button.login.label', default: 'Login')}" />
         </fieldset>
     </g:form>
 </div>
