@@ -1,7 +1,6 @@
 package racetrack
 
-
-
+import org.codehaus.groovy.grails.plugins.codecs.Base64Codec
 import org.junit.*
 import grails.test.mixin.*
 
@@ -20,8 +19,17 @@ class UserControllerTests {
         assert "/user/list" == response.redirectedUrl
     }
 
+    public void setUp() {
+        String.metaClass.encodeAsBase64 = {->
+            Base64Codec.encode(delegate)
+        }
+        String.metaClass.encodeAsSHA = {->
+            SHACodec.encode(delegate)
+        }
+    }
+
     void testAuthenticate() {
-        def jdoe = new User(login:"jdoe", password:"password")
+        def jdoe = new User(login:"jdoe", password:"password".encodeAsSHA())
         mockDomain(User, [jdoe])
         controller.params.login = "jdoe"
         controller.params.password = "password"
