@@ -100,3 +100,34 @@ class BootStrap {
 #### Excluding Properties from Scaffolded Views
 
 On page 91, the book instructs you to edit the `src/templates/scaffolding/create.gsp` and `edit.gsp` and add `dateCreated` and `lastUpdated` to the list `excludedProps` list. Since the writing of the book, these properties have been moved into `_form.gsp`, and they should already be present. So this step is not necessary.
+
+
+### Chapter 9
+
+#### Testing the Authenticate Controller Method
+
+On page 112, you are given a piece of code to allow you to test the `authenticate` method of the UserController. If you run this code, you will receive the following error:
+
+```
+Cannot issue a redirect(..) here. A previous call to redirect(..) has already redirected the response.
+```
+
+To resolve this, add `response.reset()` to the line before `controller.params.password = "foo"`. Here is what the code should look like:
+
+```groovy
+void testAuthenticate() {
+    def jdoe = new User(login:"jdoe", password:"password")
+    mockDomain(User, [jdoe])
+    controller.params.login = "jdoe"
+    controller.params.password = "password"
+
+    controller.authenticate()
+    assertNotNull controller.session.user
+    assertEquals "jdoe", controller.session.user.login
+
+    response.reset()
+    controller.params.password = "foo"
+    controller.authenticate()
+    assertTrue controller.flash.message.startsWith("Sorry, jdoe")
+}
+```
